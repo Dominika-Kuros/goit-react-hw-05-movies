@@ -1,0 +1,23 @@
+.homeList{
+    list-style: none;
+    font-family: Arial;
+    font-size: 22px;
+    line-height: 30px;
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: auto;
+}
+
+a{
+    text-decoration: none;
+}
+
+.homeTitle{
+    font-family: Arial;
+    font-size: 32px;
+    line-height: 30px; 
+    text-align: center; 
+    padding: 20px;
+}

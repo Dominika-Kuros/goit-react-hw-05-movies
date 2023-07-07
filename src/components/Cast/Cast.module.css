@@ -1,0 +1,35 @@
+.list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+ 
+  font-size: 18px;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  width: 960px;
+  text-align: center;
+  padding-inline-start: -40px;
+}
+
+.listItem{
+    
+    display: flex;
+    width: 260px;
+    height: 400px;
+    background-color: rgb(241, 241, 241);
+    background-size: 260px 400px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Arial;
+    font-size: 14px;
+    text-align: center;
+   
+}
+
+.castTitle{
+    font-family: Arial;
+    font-size: 24px; 
+    text-align: center;
+}

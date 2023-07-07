@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
+import css from "../SearchMovies/SearchMovies.module.css";
 
 const SearchMovies = ({ onSubmit }) => {
   const handleSubmit = (e) => {
@@ -7,18 +8,24 @@ const SearchMovies = ({ onSubmit }) => {
 
     const query = e.target.elements.query.value;
     if (!query) {
-      toast.error("Please enter something");
+      toast.error("Start searching");
       return;
     }
 
     onSubmit(query);
-    e.target.reset();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="query" type="text" placeholder="Search movies" />
-      <button type="submit">Search</button>
+    <form className={css.searchForm} onSubmit={handleSubmit}>
+      <input
+        className={css.input}
+        name="query"
+        type="text"
+        placeholder="Search movies"
+      />
+      <button className={css.searchButton} type="submit">
+        Search
+      </button>
     </form>
   );
 };

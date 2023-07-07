@@ -1,0 +1,42 @@
+
+.header
+{  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 8px 0;
+  margin: 16px;
+  border-bottom: 1px solid black;
+
+  > nav {
+    display: flex;
+  }
+}
+
+.link 
+ { font-family: arial;
+  font-size: 18px;
+  border-style: none;
+  width: 100px;
+  height: 40px;
+  margin-left: 1rem;
+
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background-color: #aab2e2;
+    color: #ffff;
+  }
+  &:focus {
+    color: white;
+    background-color: #727ab3;
+  }
+}
+
+.container 
+ { max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;}
+

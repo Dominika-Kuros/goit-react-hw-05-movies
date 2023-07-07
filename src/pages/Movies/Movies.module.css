@@ -1,0 +1,32 @@
+.moviePageTitle{
+    font-family: Arial;
+    font-size: 24px;
+    padding: 30px;
+    text-align: center;
+}
+
+.moviePageList{
+    list-style: none;
+    font-family: Arial;
+    font-size: 22px;
+    line-height: 30px;
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: auto;
+    margin-left: 40px;
+    padding-top: 20px;
+    
+}
+.moviePageImg{
+    width: 250px;
+    
+}
+
+.moviePageDiv{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+

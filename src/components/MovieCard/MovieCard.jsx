@@ -1,13 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, Outlet, Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import {
-  Container,
-  Img,
-  MovieInfo,
-  Overview,
-  AdditionalInfo,
-  Title,
-} from "./MovieCard.styled";
+import { Suspense } from "react";
+import Loader from "../Loader/Loader";
+
+import css from "./MovieCard.module.css";
 
 const MovieCard = ({ movie }) => {
   const { title, release_date, poster_path, vote_average, overview, genres } =
@@ -28,43 +24,54 @@ const MovieCard = ({ movie }) => {
     : "Not rated yet";
 
   return (
-    <>
-      <Container>
-        <Img src={posterUrl} alt={`{title} poster`} />
-        <MovieInfo>
-          <Title>
+    <div>
+      <div className={css.container}>
+        <img className={css.img} src={posterUrl} alt={`{title} poster`} />
+        <div className={css.movieInfo}>
+          <div className={css.title}>
             <h1>
               {" "}
-              {title} {releaseYear}
+              {title} / {releaseYear}
             </h1>
-          </Title>
+          </div>
           <span>User score: {userScore}</span>
 
-          <Overview>
+          <div className={css.overview}>
             <h2>Overview:</h2>
             {overview}
             <h2>Genres:</h2> {genres.map((genre) => genre.name).join(", ")}
-          </Overview>
-        </MovieInfo>
-      </Container>
-      <AdditionalInfo>
-        Additional information
-        <ul>
+          </div>
+        </div>
+      </div>
+      <div className={css.additionalInfo}>
+        <h2>Additional information</h2>
+        <ul className={css.list}>
           <li>
             {" "}
-            <Link to="cast" state={{ from: location?.state?.from ?? "/" }}>
+            <Link
+              className={css.link}
+              to="cast"
+              state={{ from: location?.state?.from ?? "/" }}
+            >
               Cast
             </Link>
           </li>
           <li>
             {" "}
-            <Link to="reviews" state={{ from: location?.state?.from ?? "/" }}>
+            <Link
+              className={css.link}
+              to="reviews"
+              state={{ from: location?.state?.from ?? "/" }}
+            >
               Reviews
             </Link>
           </li>
         </ul>
-      </AdditionalInfo>
-    </>
+      </div>
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
+    </div>
   );
 };
 

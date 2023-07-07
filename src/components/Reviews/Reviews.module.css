@@ -1,0 +1,25 @@
+.reviewsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 18px;
+  list-style: none;
+  width: auto;
+  text-align: left;
+  padding-inline-start: -40px;
+}
+
+.reviewsListItem {
+  display: flex;
+  line-height: 2rem;
+  flex-direction: column;
+  font-family: Arial;
+  font-size: 14px;
+  text-align: center;
+}
+
+.reviewsTitle {
+  font-family: Arial;
+  font-size: 24px;
+  text-align: center;
+}

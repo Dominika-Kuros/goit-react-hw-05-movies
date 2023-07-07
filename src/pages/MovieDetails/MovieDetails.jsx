@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, Outlet, useLocation, Link } from "react-router-dom";
-import MovieCard from "../components/MovieCard/MovieCard";
-import { fetchMovieById } from "../services/api";
-
+import MovieCard from "../../components/MovieCard/MovieCard";
+import { fetchMovieById } from "../../services/api";
+import css from "../MovieDetails/MovieDetails.module.css";
 const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
@@ -26,8 +26,10 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <Link to={location?.state?.from ?? "/"}>
-        <button type="button">Go back</button>
+      <Link to={location.state?.from ?? "/"}>
+        <button className={css.moviesGoBackButton} type="button">
+          Go back
+        </button>
       </Link>
       <MovieCard movie={selectedMovie} />
       <Outlet />

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useLocation, Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { fetchMovieByName } from "../services/api";
-import SearchMovies from "../components/SearchMovies/SearchMovies";
+import { fetchMovieByTitle } from "../../services/api";
+import SearchMovies from "../../components/SearchMovies/SearchMovies";
+import css from "../Movies/Movies.module.css";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -15,7 +16,7 @@ const Movies = () => {
 
     const getMovie = async () => {
       try {
-        const { results } = await fetchMovieByName(query);
+        const { results } = await fetchMovieByTitle(query);
 
         if (results.length === 0) {
           toast.dismiss();
@@ -38,21 +39,28 @@ const Movies = () => {
   };
 
   return (
-    <main>
-      <h2>Movies Page</h2>
+    <div className={css.moviePageDiv}>
+      <h2 className={css.moviePageTitle}>Movies Page</h2>
 
       <SearchMovies onSubmit={handleSubmit} />
 
-      <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-              {movie.title}
-            </Link>
-          </li>
-        ))}
+      <ul className={css.moviePageList}>
+        {movies.map((movie) => {
+          const { id, poster_path } = movie;
+          return (
+            <li key={id}>
+              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+                <img
+                  className={css.moviePageImg}
+                  src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+                />
+                {/* {movie.title} */}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
-    </main>
+    </div>
   );
 };
 
