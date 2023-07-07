@@ -68,9 +68,6 @@ const MovieCard = ({ movie }) => {
           </li>
         </ul>
       </div>
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
     </div>
   );
 };
