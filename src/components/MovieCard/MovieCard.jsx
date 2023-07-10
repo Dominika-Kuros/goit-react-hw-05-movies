@@ -1,7 +1,5 @@
-import { useLocation, Outlet, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Suspense } from "react";
-import Loader from "../Loader/Loader";
 
 import css from "./MovieCard.module.css";
 
