@@ -49,13 +49,19 @@ const Movies = () => {
           const { id, poster_path } = movie;
           return (
             <li key={id}>
-              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+              {poster_path ? (
+                <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+                  <img
+                    className={css.moviePageImg}
+                    src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+                  />
+                </Link>
+              ) : (
                 <img
                   className={css.moviePageImg}
-                  src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+                  src={`https://via.placeholder.com/200x300?text=No+Image`}
                 />
-                {/* {movie.title} */}
-              </Link>
+              )}
             </li>
           );
         })}
