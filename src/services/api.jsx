@@ -1,43 +1,64 @@
 import axios from "axios";
-const baseUrl = "https://api.themoviedb.org";
-const API_KEY = "465bab10917ee0618ec1147fd7a20e21";
+
+const baseUrl = "https://api.themoviedb.org/3/";
+const params = {
+  api_key: "465bab10917ee0618ec1147fd7a20e21",
+  language: "en-US",
+  page: 1,
+};
 
 export const fetchTrendingMovies = async () => {
-  const { data } = await axios.get(
-    `${baseUrl}/3/trending/movie/day?api_key=${API_KEY}`
-  );
-
-  return data;
+  try {
+    const { data } = await axios.get(`${baseUrl}trending/movie/day?`, {
+      params,
+    });
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const fetchMovieByTitle = async (query) => {
-  const { data } = await axios.get(
-    `${baseUrl}/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
-  );
-
-  return data;
+  try {
+    const { data } = await axios.get(`${baseUrl}search/movie?&query=${query}`, {
+      params,
+    });
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const fetchMovieById = async (movieId) => {
-  const { data } = await axios.get(
-    `${baseUrl}/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
-  );
-
-  return data;
+  try {
+    const { data } = await axios.get(`${baseUrl}movie/${movieId}?`, { params });
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const fetchMovieCast = async (movieId) => {
-  const { data } = await axios.get(
-    `${baseUrl}/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
-  );
-
-  return data;
+  try {
+    const { data } = await axios.get(`${baseUrl}movie/${movieId}/credits?`, {
+      params,
+    });
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-export const fetchMovieReviews = async (movieId) => {
-  const { data } = await axios.get(
-    `${baseUrl}/3/movie/${movieId}}/reviews?api_key=${API_KEY}&language=en-US&page=1`
-  );
-
-  return data;
+export const fetchMovieReviews = async (movieId, page) => {
+  try {
+    const { data } = await axios.get(
+      `${baseUrl}movie/${movieId}/reviews?&${page}`,
+      {
+        params,
+      }
+    );
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 };
