@@ -6,3 +6,4 @@ Used technologies:
 - axios
 - PropTypes
 - css modules
+- vite
